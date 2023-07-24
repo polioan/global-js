@@ -97,6 +97,6 @@ yarn add @polioan/pollute-global
 ### Deno
 
 ```ts
-import { pollute } from 'https://deno.land/x/polute_global@1.0.1/src/index.ts'
+import { pollute } from 'https://deno.land/x/polute_global@1.0.4/src/index.ts'
 pollute('some', 'test')
 ```
