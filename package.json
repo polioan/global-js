@@ -1,0 +1,72 @@
+{
+  "name": "@polioan/pollute-global",
+  "version": "1.0.0",
+  "author": {
+    "name": "Ivan Polushin",
+    "url": "https://t.me/polioan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/polioan/pollute-global"
+  },
+  "homepage": "https://github.com/polioan/pollute-global#readme",
+  "bugs": {
+    "url": "https://github.com/polioan/pollute-global/issues"
+  },
+  "funding": "https://boosty.to/polioan",
+  "keywords": [
+    "pollute",
+    "pollution",
+    "global",
+    "globals",
+    "globalThis",
+    "window",
+    "self"
+  ],
+  "description": "Make any value global in any JavaScript environment!",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "dist/index.cjs.cjs",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node .\\scripts\\build.js",
+    "test:types": "tsc --noEmit",
+    "test:e2e": "node .\\test\\newjs\\index.test.js",
+    "test:e2e:oldjs": "node .\\test\\oldjs\\index.test.js",
+    "test:deno": "deno run --allow-read .\\test\\deno\\index.test.js",
+    "test:windows": "node .\\test\\windows\\index.test.js",
+    "pretest": "npm run build",
+    "test": "npm run test:types && npm run test:e2e && npm run test:deno && npm run test:windows",
+    "lint": "eslint . --ext .ts,.js,.cts,.cjs,.mjs",
+    "lint:fix": "eslint . --ext .ts,.js,.cts,.cjs,.mjs --fix",
+    "format": "prettier --write \"./**/*.{js,ts,cts,cjs,mjs,json,yml}\"",
+    "format:check": "prettier --check \"./**/*.{js,ts,cts,cjs,mjs,json,yml}\"",
+    "publish:dryrun": "npm publish --dry-run",
+    "check": "npm run format:check && npm run lint && npm run test && npm run publish:dryrun"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.44.0",
+    "@types/node": "^20.4.4",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.45.0",
+    "eslint-plugin-jsdoc": "^46.4.4",
+    "eslint-plugin-spellcheck": "^0.0.20",
+    "eslint-plugin-unicorn": "^48.0.0",
+    "prettier": "^3.0.0",
+    "puppeteer": "^20.9.0",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.1.6"
+  }
+}
