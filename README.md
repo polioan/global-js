@@ -1,5 +1,5 @@
 # pollute-global
-[![version](https://img.shields.io/npm/v/@polioan/pollute-global.svg)](https://www.npmjs.com/package/typescript-notion-formulas)
+[![version](https://img.shields.io/npm/v/@polioan/pollute-global.svg)](https://www.npmjs.com/package/@polioan/pollute-global)
 [![license](https://img.shields.io/github/license/polioan/pollute-global)](https://opensource.org/licenses/MIT)
 
 Make any value global in any JavaScript environment!
