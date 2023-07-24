@@ -1,4 +1,6 @@
 # pollute-global
+[![version](https://img.shields.io/npm/v/@polioan/pollute-global.svg)](https://www.npmjs.com/package/typescript-notion-formulas)
+[![license](https://img.shields.io/github/license/polioan/pollute-global)](https://opensource.org/licenses/MIT)
 
 Make any value global in any JavaScript environment!
 
@@ -81,4 +83,13 @@ npm i @polioan/pollute-global
 
 ```shell
 yarn add @polioan/pollute-global
+```
+
+### CDN
+
+```html
+<script src="https://unpkg.com/@polioan/pollute-global@1.0.0/dist/index.global.js"></script>
+<script>
+  pollute('some', 'test')
+</script>
 ```
