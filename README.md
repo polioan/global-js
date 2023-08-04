@@ -69,6 +69,8 @@ const test = calculate(2, 3) // will work
 
 ## Install
 
+### npm
+
 ```shell
 npm i @polioan/global-js
 ```
@@ -77,4 +79,20 @@ npm i @polioan/global-js
 
 ```shell
 yarn add @polioan/global-js
+```
+
+### CDN
+
+```html
+<script src="https://unpkg.com/@polioan/global-js@2.0.0/dist/index.global.js"></script>
+<script>
+  setGlobal('some', 'test')
+</script>
+```
+
+### Deno
+
+```ts
+import { setGlobal } from 'https://deno.land/x/global_js@2.0.0/src/index.ts'
+setGlobal('some', 'test')
 ```
