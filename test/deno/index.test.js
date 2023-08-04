@@ -1,13 +1,34 @@
 const toImport = '../../dist/index.esm.js'
 
-import(toImport).then(({ pollute }) => {
-  pollute('some', 123456)
+void import(toImport).then(({ getGlobal, setGlobal }) => {
+  const setTimeout = getGlobal('setTimeout')
+  if (setTimeout.name !== 'setTimeout') {
+    throw new Error('Mismatch!')
+  }
+
+  Object.defineProperty(window, 'err', {
+    get() {
+      throw new Error('get err')
+    },
+  })
+
+  if (getGlobal('err') !== undefined) {
+    throw new Error('Mismatch!')
+  }
 
   // @ts-expect-error
-  if (window.some !== 123456) {
+  window.global = { err: 'text' }
+
+  if (getGlobal('err') !== 'text') {
     throw new Error('Mismatch!')
-  } else {
-    // @ts-expect-error
-    console.log('Ok', window.some)
+  }
+
+  //
+
+  setGlobal('key', 'value')
+
+  // @ts-expect-error
+  if (window.key !== 'value') {
+    throw new Error('Mismatch!')
   }
 })

@@ -1,102 +1,80 @@
-# pollute-global
-[![version](https://img.shields.io/npm/v/@polioan/pollute-global.svg)](https://www.npmjs.com/package/@polioan/pollute-global)
-[![license](https://img.shields.io/github/license/polioan/pollute-global)](https://opensource.org/licenses/MIT)
+# global-js
+[![version](https://img.shields.io/npm/v/@polioan/global-js.svg)](https://www.npmjs.com/package/@polioan/global-js)
+[![license](https://img.shields.io/github/license/polioan/global-js)](https://opensource.org/licenses/MIT)
 
-Make any value global in any JavaScript environment!
+get, set global values in any js env
 
 ## Use case
 
 ### Test
 
 ```ts
-import { pollute } from '@polioan/pollute-global'
+import { setGlobal, getEnv } from '@polioan/global-js'
 
 function toTest() {
   return 333
 }
 
-if (process.env.NODE_ENV === 'test') {
-  pollute('toTest', toTest)
+if (getEnv('NODE_ENV') === 'test') {
+  setGlobal('toTest', toTest)
 }
 ```
 
 ### Global cache (useful for hot reload)
 
 ```ts
-import { pollute } from '@polioan/pollute-global'
+import { getEnv, getGlobal, setGlobal } from '@polioan/global-js'
 import { PrismaClient } from '@prisma/client'
 
-const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined
-}
+export const prisma: PrismaClient = getGlobal('prisma') ?? new PrismaClient({})
 
-export const prisma = globalForPrisma.prisma ?? new PrismaClient({})
-
-if (process.env.NODE_ENV !== 'production') {
-  pollute('prisma', prisma)
+if (getEnv('NODE_ENV') !== 'production') {
+  setGlobal('prisma', prisma)
 }
 ```
 
 ### Libs for browser
 
 ```ts
-import { pollute } from '@polioan/pollute-global'
+import { setGlobal } from '@polioan/global-js'
 
 class Myjquery {}
 
-pollute('$', new Myjquery())
+setGlobal('$', new Myjquery())
 ```
 
 ### Polyfills
 
 ```ts
-import { pollute } from '@polioan/pollute-global'
+import { setGlobal } from '@polioan/global-js'
 
 if (typeof structuredClone === 'undefined') {
-  pollute('structuredClone', value => JSON.parse(JSON.stringify(value)))
+  setGlobal('structuredClone', value => JSON.parse(JSON.stringify(value)))
 }
 ```
 
 ### Creating global libraries
 
 ```ts
-import { pollute } from '@polioan/pollute-global'
+import { setGlobal } from '@polioan/global-js'
 
 declare global {
   var calculate: (a: number, b: number) => number
 }
 
-pollute('calculate', (a: number, b: number) => a + b)
+setGlobal('calculate', (a: number, b: number) => a + b)
 
 const test = calculate(2, 3) // will work
 ```
 
 ## Install
 
-### npm
-
 ```shell
-npm i @polioan/pollute-global
+npm i @polioan/global-js
 ```
 
 ### yarn
 
 ```shell
-yarn add @polioan/pollute-global
-```
-
-### CDN
-
-```html
-<script src="https://unpkg.com/@polioan/pollute-global@1.0.0/dist/index.global.js"></script>
-<script>
-  pollute('some', 'test')
-</script>
-```
-
-### Deno
-
-```ts
-import { pollute } from 'https://deno.land/x/polute_global@1.0.4/src/index.ts'
-pollute('some', 'test')
+yarn add @polioan/global-js
 ```

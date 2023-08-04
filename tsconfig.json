@@ -2,10 +2,10 @@
   "compilerOptions": {
     "target": "ES3",
     "module": "NodeNext",
-    "moduleResolution": "NodeNext",
     "noEmit": false,
     "removeComments": true,
     "sourceMap": false,
+    "declaration": true,
 
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -15,7 +15,7 @@
 
     "outDir": "./dist",
 
-    "lib": ["DOM"],
+    "lib": ["DOM", "ESNext", "ScriptHost"],
     "plugins": [],
 
     "allowJs": true,
@@ -40,6 +40,7 @@
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "noImplicitOverride": true,
+
     "verbatimModuleSyntax": false,
 
     "ignoreDeprecations": "5.0"

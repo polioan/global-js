@@ -1,17 +1,17 @@
 {
-  "name": "@polioan/pollute-global",
-  "version": "1.0.4",
+  "name": "@polioan/global-js",
+  "version": "2.0.0",
   "author": {
     "name": "Ivan Polushin",
     "url": "https://t.me/polioan"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/polioan/pollute-global"
+    "url": "https://github.com/polioan/global-js"
   },
-  "homepage": "https://github.com/polioan/pollute-global#readme",
+  "homepage": "https://github.com/polioan/global-js#readme",
   "bugs": {
-    "url": "https://github.com/polioan/pollute-global/issues"
+    "url": "https://github.com/polioan/global-js/issues"
   },
   "funding": "https://boosty.to/polioan",
   "keywords": [
@@ -23,13 +23,13 @@
     "window",
     "self"
   ],
-  "description": "Make any value global in any JavaScript environment!",
+  "description": "get, set global values in any js env",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
   "type": "module",
-  "main": "dist/index.cjs.cjs",
+  "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -39,14 +39,10 @@
     "README.md"
   ],
   "scripts": {
-    "build": "node .\\scripts\\build.js",
+    "build": "node scripts\\build.js",
     "test:types": "tsc --noEmit",
-    "test:e2e": "node .\\test\\newjs\\index.test.js",
-    "test:e2e:oldjs": "node .\\test\\oldjs\\index.test.js",
-    "test:deno": "deno run --allow-read .\\test\\deno\\index.test.js",
-    "test:windows": "node .\\test\\windows\\index.test.js",
-    "pretest": "npm run build",
-    "test": "npm run test:types && npm run test:e2e && npm run test:deno && npm run test:windows",
+    "test:deno": "deno run --allow-read test\\deno\\index.test.js",
+    "test": "npm run test:types && npm run test:deno",
     "lint": "eslint . --ext .ts,.js,.cts,.cjs,.mjs",
     "lint:fix": "eslint . --ext .ts,.js,.cts,.cjs,.mjs --fix",
     "format": "prettier --write \"./**/*.{js,ts,cts,cjs,mjs,json,yml}\"",
@@ -56,16 +52,17 @@
   },
   "devDependencies": {
     "@types/eslint": "^8.44.0",
-    "@types/node": "^20.4.4",
+    "@types/node": "^20.4.6",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
-    "cross-env": "^7.0.3",
     "eslint": "^8.45.0",
+    "eslint-config-polioan": "^1.2.0",
     "eslint-plugin-jsdoc": "^46.4.4",
+    "eslint-plugin-security": "^1.7.1",
     "eslint-plugin-spellcheck": "^0.0.20",
-    "eslint-plugin-unicorn": "^48.0.0",
+    "eslint-plugin-typescript-enum": "^2.1.0",
+    "eslint-plugin-unicorn": "^48.0.1",
     "prettier": "^3.0.0",
-    "puppeteer": "^20.9.0",
     "rimraf": "^5.0.1",
     "typescript": "^5.1.6"
   }
