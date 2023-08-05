@@ -84,7 +84,7 @@ yarn add @polioan/global-js
 ### CDN
 
 ```html
-<script src="https://unpkg.com/@polioan/global-js@2.0.0/dist/index.global.js"></script>
+<script src="https://unpkg.com/@polioan/global-js@2.0.1/dist/index.global.js"></script>
 <script>
   setGlobal('some', 'test')
 </script>
@@ -93,6 +93,6 @@ yarn add @polioan/global-js
 ### Deno
 
 ```ts
-import { setGlobal } from 'https://deno.land/x/global_js@2.0.0/src/index.ts'
+import { setGlobal } from 'https://deno.land/x/global_js@2.0.1/src/index.ts'
 setGlobal('some', 'test')
 ```

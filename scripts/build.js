@@ -25,7 +25,7 @@ function buildCJS() {
   execSync('npx tsc -p tsconfig.build.json -m commonjs -d false')
   fs.renameSync(
     path.join(distFolder, 'index.js'),
-    path.join(distFolder, 'index.cjs.js')
+    path.join(distFolder, 'index.cjs.cjs')
   )
 }
 
